@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { message } from 'antd';
 const $axios = axios.create({
-	baseURL: process.env.REACT_APP_BASE_URL,
+	baseURL: 'localhost:3030',
 	timeout: 6000,
 	retry:4,
-	retryDelay:1000
+	retryDelay:1000,
+	withCredentials: true
 });
 
 //请求拦截
@@ -65,4 +66,20 @@ $axios.interceptors.response.use(
 	}
 );
 
+// 请求方式配置
+const Http = {}
+Http.post = (url, data) => {
+	return $axios({
+		method: 'post',
+		url,
+		data
+	})
+}
+Http.get = (url, params) => {
+	return $axios({
+		method: 'get',
+		url,
+		params
+	})
+}
 export default $axios;
