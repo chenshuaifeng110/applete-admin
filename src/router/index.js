@@ -2,7 +2,7 @@ import React from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import Layout from '@/views/layout/Index';
 import Login from '@/views/login/Index';
-import AuthRouter from '@/views/auth/AuthRouter';
+import AuthRouter from './AuthRouter';
 const Router = () => {
 	return (
 		<HashRouter>

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Form, Icon, Input, Button } from 'antd';
+import {Form, Icon, Input, Button } from 'antd';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { setUserInfo } from '@/redux/actions/userInfo';
+import { userLogin } from '@/redux/actions/userInfo';
 import '@/assets/css/login';
 
 const FormItem = Form.Item;
@@ -14,17 +14,10 @@ class Login extends Component {
 	}
 	login = e => {
 		e.preventDefault();
-		this.props.form.validateFields((err, values) => {
+		this.props.form.validateFields( async (err, values) => {
 			if (!err) {
-				console.log(this.props);
-				localStorage.setItem('isLogin', '1');
-				// // 模拟生成一些数据
-				this.props.setUserInfo(Object.assign({}, values, { role: { type: 1, name: '超级管理员' } }));
-				localStorage.setItem('userInfo', JSON.stringify(Object.assign({}, values, { role: { type: 1, name: '超级管理员' } })));
-				this.props.history.push('/dashboard');
-			} else {
-				console.log('aaaa',err);
-			}
+				this.props.userLogin(values)
+			} 
 		});
 	};
 	handleCountdown = () => {
@@ -52,9 +45,9 @@ class Login extends Component {
 		const { getFieldDecorator} = this.props.form;
 		return (
 			<Form className="login-form">
-				<div className="title">后台管理系统</div>
+				<div className="title">快蜗云管理系统</div>
 				<FormItem>
-					{getFieldDecorator('userName', {
+					{getFieldDecorator('merchant_account', {
 						rules: [{ required: true, message: '请填写用户名！' }]
 					})(<Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="用户名" />)}
 				</FormItem>
@@ -75,9 +68,7 @@ class Login extends Component {
 
 const mapStateToProps = state => state;
 const mapDispatchToProps = dispatch => ({
-	setUserInfo: data => {
-		dispatch(setUserInfo(data));
-	}
+	userLogin: data => dispatch(userLogin(data)),
 });
 export default connect(
 	mapStateToProps,

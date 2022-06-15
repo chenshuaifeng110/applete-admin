@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import {Tabs} from 'antd';
+import {Tabs } from 'antd';
 import Particles from 'react-particles-js';
 import Login from './Login';
 import Regist from './Regist';
+import ForgotPWD from './ForgotPWD';
+import particlesConfig from '@/utils/particles'
 import '@/assets/css/login';
-
+import main from '@/assets/img/main.png'
 const { TabPane } = Tabs;
 class Index extends Component {
 	state = { clientHeight: document.documentElement.clientHeight || document.body.clientHeight };
@@ -28,28 +30,30 @@ class Index extends Component {
 	render() {
 		return (
 			<div className="container">
-				<Particles
-					height={this.state.clientHeight - 5 + 'px'}
-					params={{
-						number: { value: 50 },
-						ize: { value: 3 },
-						interactivity: {
-							events: {
-								onhover: { enable: true, mode: 'repulse' }
-							}
-						}
-					}}
-				/>
-				<div className="content">
-					<Tabs tabPosition= 'bottom' tabBarStyle = { {color: '#fff'}}>
-						<TabPane tab="登录" key="1">
-							<Login/>
-						</TabPane>
-						<TabPane tab="账号注册" key="2">
-							<Regist/>
-						</TabPane>
-					</Tabs>
+				<div className='container-left'>
+					<img alt='背景图' src={main}></img>
 				</div>
+				<div className='container-right'>
+					<Particles
+						style={{background: "#fff"}}
+						height={this.state.clientHeight - 5 + 'px'}
+						params={particlesConfig}
+					/>
+					<div className="content">
+						<Tabs tabPosition= 'bottom' size='smll' tabBarStyle = { {color: '#fff'}} >
+							<TabPane tab="登录" key="1">
+								<Login/>
+							</TabPane>
+							<TabPane tab="注册" key="2">
+								<Regist/>
+							</TabPane>
+							<TabPane tab="忘记密码" key="3">
+								<ForgotPWD/>
+							</TabPane>
+						</Tabs>
+					</div>
+				</div>
+			
 			</div>
 		);
 	}

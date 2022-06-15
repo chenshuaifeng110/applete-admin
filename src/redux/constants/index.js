@@ -1,4 +1,7 @@
 export const SET_USERINFO = 'SET_USERINFO';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const ADD_TAG = 'ADD_TAG';
 export const REMOVE_TAG = 'REMOVE_TAG';
 export const EMPTY_TAG = 'EMPTY_TAG';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Table } from 'antd';
-import $axios from '../../axios/$axios';
+// import $axios from '../../axios/$axios';
 
 class TableBasic extends Component {
 	state = {
@@ -56,21 +56,21 @@ class TableBasic extends Component {
 	};
 	fetch = () => {
 		this.setState({ loading: true });
-		$axios({
-			url: 'https://randomuser.me/api?results=10',
-			method: 'get',
-			type: 'json'
-		}).then(data => {
-			const pagination = { ...this.state.pagination };
-			// Read total count from server
-			// pagination.total = data.totalCount
-			pagination.total = 200;
-			this.setState({
-				loading: false,
-				data: data.data.results,
-				pagination
-			});
-		});
+		// $axios({
+		// 	url: 'https://randomuser.me/api?results=10',
+		// 	method: 'get',
+		// 	type: 'json'
+		// }).then(data => {
+		// 	const pagination = { ...this.state.pagination };
+		// 	// Read total count from server
+		// 	// pagination.total = data.totalCount
+		// 	pagination.total = 200;
+		// 	this.setState({
+		// 		loading: false,
+		// 		data: data.data.results,
+		// 		pagination
+		// 	});
+		// });
 	};
 	render() {
 		return (

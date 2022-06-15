@@ -46,4 +46,20 @@ const unique = arr => {
 	return res;
 };
 
-export { unique, debounce };
+/**
+ * @description 拆分路由路径
+ * @exmple /menu/level/submenu-1 => ['/menu', '/menu/level/', '/menu/level/submenu-1']
+ */
+ const splitRoute = (path) => {
+	let resArry = [];
+	let subItem = ''
+    path = path.substr(1)
+	let arr1 = path.split('/')
+	arr1.forEach(item => {
+		subItem = subItem +'/'+ item
+		resArry.push(subItem)
+	});
+	return resArry
+} 
+
+export { unique, debounce, splitRoute };

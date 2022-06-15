@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { message } from 'antd';
+import store from '@/redux/store'
 const $axios = axios.create({
-	baseURL: 'localhost:3030',
+	baseURL: 'http://localhost:3030',
 	timeout: 6000,
 	retry:4,
 	retryDelay:1000,
@@ -14,9 +15,10 @@ $axios.interceptors.request.use(
 		// 在发送请求之前做些什么
 		// 通过reudx的store拿到拿到全局状态树的token ，添加到请求报文，后台会根据该报文返回status
 		// 此处应根据具体业务写token
-		// const token = store.getState().user.token || localStorage.getItem('token');
-		const token = 'FA2019';
-		config.headers['X-Token'] = token;
+		const token = store.getState()?.userInfo?.token
+		if(token){
+			config.headers['authorization'] = `Bearer ${token}`;
+		}
 		return config;
 	},
 	function(error) {
@@ -29,11 +31,9 @@ $axios.interceptors.request.use(
 // 添加响应拦截器
 $axios.interceptors.response.use(
 	function(response) {
-		// 对响应数据做点什么
-		if (response.data.success === false) {
-			message.error(response.data.message);
-		}
-		return response;
+		// 集中处理权限校验问题
+		if(response.data.code === 301) return window.location.hash = '/login'
+		else return response.data
 	},
 	function(error) {
 		if (error.code === 'ECONNABORTED' && error.message.indexOf('timeout') !== -1) {
@@ -61,7 +61,7 @@ $axios.interceptors.response.use(
 				return axios(config);
 			});
 		} else {
-			return Promise.reject(error);
+			return Promise.reject(error.response.data);
 		}
 	}
 );
@@ -82,4 +82,4 @@ Http.get = (url, params) => {
 		params
 	})
 }
-export default $axios;
+export default Http

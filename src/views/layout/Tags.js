@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { addTag, removeTag, emptyTag } from '@/redux/actions/tagList';
 import { menus } from '../../router/menus';
 import { Scrollbars } from 'react-custom-scrollbars';
-
+import '@/assets/css/tags';
 class Tags extends Component {
 	handChangeTag(activeKey) {
 		if (this.props.location.pathname === activeKey) return;

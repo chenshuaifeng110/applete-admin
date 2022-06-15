@@ -11,6 +11,7 @@ const MainContent = ({ location }) => {
 
 	const handleFilter = permission => {
 		// 过滤没有权限的页面
+		// console.log('aaaaaaaa', permission);
 		if (!permission || permission === roleType) return true;
 		return false;
 	};

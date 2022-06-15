@@ -6,14 +6,19 @@ import { setUserInfo } from '@/redux/actions/userInfo';
 import { addTag } from '@/redux/actions/tagList';
 import { menus } from '@/router/menus';
 import { routes } from '@/router/routes';
+import {getStorage} from '@/utils/storage'
+import {splitRoute} from '@/utils'
+import logo from '@/assets/img/logo.png'
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
 class SideNenu extends Component {
-	state = { menuSelected: this.props.history.location.pathname };
+	state = { 
+		menuSelected: this.props.history.location.pathname
+	};
 
 	handleFilter = permission => {
-		const roleType = localStorage.getItem('userInfo') && JSON.parse(localStorage.getItem('userInfo')).role.type;
+		const roleType = getStorage('userInfo')?.role?.type;
 		// 过滤没有权限的页面
 		if (!permission || permission === roleType) {
 			return true;
@@ -35,6 +40,10 @@ class SideNenu extends Component {
 	renderMenu = data => {
 		return data.map(item => {
 			if (item.children) {
+				const cItem = item.children.find(cItem => cItem.path === this.menuSelected)
+				if(cItem) {
+					this.openkeys = splitRoute(item.path);
+				} 
 				return (
 					this.handleFilter(item.permission) && (
 						<SubMenu
@@ -64,18 +73,17 @@ class SideNenu extends Component {
 		});
 	};
 	render() {
-		// console.log(this.props);
-		const menuSelected = this.props.history.location.pathname;
-		const menuOpened = `/${menuSelected.split('/')[1]}`;
-		const type = this.props.theme.type;
+		this.menuSelected = this.props.history.location.pathname;
+		const menuNodes = this.renderMenu(menus);
 		const { collapse } = this.props;
 		return (
-			<Sider trigger={null} collapsible collapsed={collapse.isCollapsed} theme={type} className="app-sider">
-				<div className="logo" style={{ color: type === 'dark' ? '#ffffffa6' : '' }}>
-					Logo
+			<Sider trigger={null} collapsible collapsed={collapse.isCollapsed} theme='dark' className="app-sider">
+				<div className="logo" style={{padding: '30px 0 20px 10px', width: '100%' }}>
+					<img src={logo} alt="快蜗云" style={{display: 'inline-block', width: '55px',paddingRight: '10px'}}></img>
+					<span style={{color:'white', display: collapse.isCollapsed?'none':'inline-block' }}>快蜗云</span>
 				</div>
-				<Menu style={{ height: '50px' }} theme={type} defaultOpenKeys={[menuOpened]} defaultSelectedKeys={[menuSelected]} selectedKeys={[menuSelected]} mode="inline">
-					{this.renderMenu(menus)}
+				<Menu style={{ height: '50px' }} theme='dark'  selectedKeys={[this.menuSelected ]}  defaultOpenKeys={this.openkeys} mode="inline">
+					{menuNodes}
 				</Menu>
 			</Sider>
 		);

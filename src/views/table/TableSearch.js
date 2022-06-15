@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Table, Row, Col, Button, Form, Select } from 'antd';
-import $axios from '../../axios/$axios';
+// import $axios from '../../axios/$axios';
 const FormItem = Form.Item;
 const { Option } = Select;
 class TableSearch extends Component {
@@ -53,15 +53,15 @@ class TableSearch extends Component {
 	};
 	fetch = (params = {}) => {
 		this.setState({ loading: true });
-		$axios.get('https://randomuser.me/api', { params: { results: this.state.pagination.pageSize, ...params } }).then(data => {
-			const pagination = { ...this.state.pagination };
-			pagination.total = 200;
-			this.setState({
-				loading: false,
-				data: data.data.results,
-				pagination
-			});
-		});
+		// $axios.get('https://randomuser.me/api', { params: { results: this.state.pagination.pageSize, ...params } }).then(data => {
+		// 	const pagination = { ...this.state.pagination };
+		// 	pagination.total = 200;
+		// 	this.setState({
+		// 		loading: false,
+		// 		data: data.data.results,
+		// 		pagination
+		// 	});
+		// });
 	};
 
 	onSelectedRowKeysChange = selectedRowKeys => {
