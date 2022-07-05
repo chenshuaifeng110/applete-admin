@@ -41,6 +41,9 @@ class Login extends Component {
 	hasErrors = (fieldsError) => {
 		return Object.keys(fieldsError).some(field => fieldsError[field]);
 	}
+	// componentWillUnmount(){
+
+	// }
 	render() {
 		const { getFieldDecorator} = this.props.form;
 		return (

@@ -14,7 +14,7 @@ class Intercept extends Component {
 	render() {
 		const userInfo = this.props.userInfo;
 		if (Object.keys(userInfo).length === 0) return null;
-		let name = userInfo.role.type === 1 ? '超级管理员' : '普通用户';
+		let name = userInfo?.role?.type === 1 ? '超级管理员' : '普通用户';
 		return (
 			<div className="shadow-radius">
 				<Row>

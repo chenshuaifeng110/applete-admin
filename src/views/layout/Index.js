@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SideMenu from './SideMenu';
 import TopHeader from './TopHeader';
+import Ad from '../ad'
 import { Layout } from 'antd';
 import MainContent from './MainContent';
 class Index extends Component {
@@ -12,6 +13,7 @@ class Index extends Component {
 					<SideMenu />
 					<Layout>
 						<TopHeader />
+						<Ad/>
 						<MainContent />
 					</Layout>
 				</Layout>

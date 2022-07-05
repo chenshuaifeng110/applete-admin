@@ -32,35 +32,14 @@ $axios.interceptors.request.use(
 $axios.interceptors.response.use(
 	function(response) {
 		// 集中处理权限校验问题
-		if(response.data.code === 301) return window.location.hash = '/login'
+		if(response.data.code === 401 ) return window.location.hash = '/login'
 		else return response.data
 	},
 	function(error) {
-		if (error.code === 'ECONNABORTED' && error.message.indexOf('timeout') !== -1) {
-			var config = error.config;
-			config.__retryCount = config.__retryCount || 0;
-
-			if (config.__retryCount >= config.retry) {
-				// Reject with the error
-				//window.location.reload();
-				return Promise.reject(error);
-			}
-
-			// Increase the retry count
-			config.__retryCount += 1;
-
-			// Create new promise to handle exponential backoff
-			var backoff = new Promise(function(resolve) {
-				setTimeout(function() {
-					//console.log('resolve');
-					resolve();
-				}, config.retryDelay || 1);
-			});
-
-			return backoff.then(function() {
-				return axios(config);
-			});
-		} else {
+		if(error?.response?.status === 403) {
+			message.warn('Token过期')
+			return window.location.hash = '/login'
+		}else {
 			return Promise.reject(error.response.data);
 		}
 	}

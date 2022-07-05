@@ -16,6 +16,7 @@ class Regist extends Component {
 		e.preventDefault();
 		this.props.form.validateFields( async (err, values) => {
 			if (!err) {
+				console.log('err', err);
 				let res = await regist('/api/merchant_account/set_merchant_account', values)
 				if(res.code === 0){
 					message.success('注册成功,请登录')
@@ -64,7 +65,7 @@ class Regist extends Component {
 		let res = await queryMerchantAccount('/api/merchant_account/query_merchant_account', {merchant_account:getFieldValue('merchant_account')})
 		if(res.code === 10203){
 			this.setState({
-				validateStatus: 'warning',
+				validateStatus: 'error',
 				help:'此名称已被使用'
 			})
 		}else{

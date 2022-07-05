@@ -71,7 +71,7 @@ class TopHeader extends Component {
 					<Icon className="trigger" type={collapse.isCollapsed ? 'menu-unfold' : 'menu-fold'} onClick={this.toggle} />
 					<div className="header-title" style={{cursor: 'pointer'}} onClick={this.handleClickRedirct}>快蜗云后台管理系统</div>
 					<div className="header-right">
-						<div className="setting" style={{ width: '70px',paddingRight: '5px'}}>
+						<div className="setting" style={{ width: '95px',paddingRight: '5px'}}>
 							<img src={png} alt="天气 " style={{display: 'inline-block', width: '45px',paddingRight: '5px'}}></img>
 							<span style={{fontWeight: 'bold'}}>{this.state.weatherPng}</span>
 						</div>

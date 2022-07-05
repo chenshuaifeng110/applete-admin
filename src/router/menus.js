@@ -130,7 +130,7 @@ export const menus = [
 			{
 				path: '/permission/toggle',
 				title: '权限切换',
-				permission: 1
+				permission: true
 			},
 			{
 				path: '/permission/intercept',

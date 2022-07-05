@@ -17,17 +17,6 @@ const logout = (state = {}, action) => {
 			return state
 	}
 }
-
-// const userInfo = (state = {}, action) => {
-// 	switch (action.type) {
-// 		case actionTypes.LOGIN_SUCCESS:
-// 			return action.userInfo
-// 		case actionTypes.LOGIN_FAIL:
-// 			return {msg: action.msg}
-// 		default:
-// 			return state;
-// 	}
-// }
 export {
 	userInfo,
 	logout

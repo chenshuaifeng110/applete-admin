@@ -20,6 +20,17 @@ $borderColor: #d8d8d8;
 	border-right: 1px solid $borderColor;
 	overflow-y: auto;
 	overflow-x: hidden;
+	background-color: #2d9d85;
+}
+.ant-menu-dark {
+	background-color: #2d9d85;
+}
+.ant-menu.ant-menu-dark .ant-menu-item-selected{
+	background-color: #48c0a3;
+}
+.ant-menu-dark .ant-menu-inline.ant-menu-sub {
+	background-color: #5ea596;
+	box-shadow: none;
 }
 .ant-menu-inline {
 	border: none;
@@ -157,8 +168,8 @@ $borderColor: #d8d8d8;
 	}
 	.isActive {
 		color: #fff;
-		background: linear-gradient(to right, #2187e8, #1890ff);
-		border-color: #1890ff;
+		background: $backgroundColor;
+		border-color: $color;
 		&:before {
 			background: #fff;
 		}

@@ -10,14 +10,6 @@ class ForgotPWD extends Component {
 		countdown: 59,
 		countLoad: false
 	}
-	login = e => {
-		e.preventDefault();
-		this.props.form.validateFields((err, values) => {
-			if (!err) {
-				 this.props.userLogin(values)
-			} 
-		});
-	};
 	handleSendMSG = async () => {
 		const {getFieldValue} = this.props.form;
 		let {countdown} = this.state

@@ -1,0 +1,170 @@
+.notice-body {
+    .notice {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        .notice-gif {
+            width: 100px;
+            margin-right: 100px;
+            box-shadow: 0 0 5px #f0f0f0;
+            border-radius: 50%;
+            transition:all 1s;
+            &:hover{
+             opacity: 0.6;
+             cursor: pointer;
+           }
+        }
+        .notice-order{
+            width: 50%;
+            height: 70px;
+            font-size: 16px;
+            padding: 12px 24px 6px 24px;
+            box-sizing: content-box;
+            box-shadow: 0 0 5px $boderColor;
+            .notice-text{
+                margin: 0 auto;
+                .order-num {
+                    font-size: 24px;
+                    font-weight: 500;
+                    color: $color;
+                }
+            }
+            .notice-handle {
+                font-size: 12px;
+                color: $color;
+                cursor: pointer;
+                float:right;
+                padding: 1px 5px;
+                margin-top: 5px;
+                border: 1px solid #beedf0;
+                border-radius: 3px;
+                &:hover{
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+}
+.data-statistics {
+    display: flex;
+    justify-content: space-around;
+    .statis-items{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 25%;
+        padding: 20px 10px;
+        box-shadow: 0 0 5px $boderColor;
+        .statis-top {
+            display: flex;
+            align-items: center;
+        }
+        .statis-middle {
+            display: flex;
+            align-items: center;
+        }
+    }
+    // .item1 {}
+}
+.analyse-container {
+    display: flex;
+    .analyse-left {
+        width: 65%;
+    }
+    .analyse-left{
+        display: flex;
+        flex-direction: column;
+    }
+    .analyse-right {
+        width: 35%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        .analyse-item {
+            width: 50%;
+        }
+    }
+}
+.foot-detail {
+    display: flex;
+    // height: 600px;
+    .detail-left {
+        width: 38%;
+        margin-right: 2%;
+        .left-inner{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            // transition:  all 0.5s;
+            img {
+                width: 40%;
+            }
+            span {
+                color: $color;
+                font-size: 24px;
+                font-weight: 500;
+                letter-spacing: 4px;
+                margin-top: 5px;
+            }
+            // &:hover{
+            //     opacity: 0.7;
+            // }
+        }
+        .inner-step{
+            margin-top: 10px;
+            padding-left: 20px;
+            .steps {
+                width: 100%;
+                .ant-steps-item-content {
+                    width: 100%;
+                    padding-left: 20px;
+                }
+            }
+        }
+    }
+    .detail-right {
+        width: 60%;
+        .ai-market {
+            height: 100%;
+            padding: 50px 0;
+            height: 500px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .market-items{
+                width: 31%;
+                height: 100%;
+                border-radius: 4px;
+                box-shadow: 0px 0px 3px #9c9c9c;
+                cursor: pointer;
+                background-color: pink;
+                animation: vibrate 1.5s linear infinite reverse both;
+            }
+        }
+    }
+}
+
+@keyframes vibrate {
+    0% {
+              transform: translate(0);
+    }
+    20% {
+              transform: translate(0px, -5px);
+    }
+    40% {
+              transform: translate(0px, 5px);
+    }
+    60% {
+              transform: translate(0px, 5px);
+    }
+    80% {
+              transform: translate(0px, -5px);
+    }
+    100% {
+              transform: translate(0);
+    }
+  }

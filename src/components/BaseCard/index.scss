@@ -1,0 +1,28 @@
+// $color: #48c0a3;
+.base-container {
+    padding: 16px 24px 30px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px #ccc;
+    .base-title{
+        display: flex;
+        align-items: center;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #cbf1e6;
+        .base-divider {
+            width: 3px;
+            height: 16px;
+            margin-right: 10px;
+            background-color: $color;
+        }
+        .title-text {
+            font-size: 14px;
+            font-weight: 550;
+            color: $color;
+        }
+    }
+    .base-body {
+        padding-left: 10px;
+        padding-top: 30px;
+    }
+}

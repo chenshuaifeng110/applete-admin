@@ -4,6 +4,7 @@ import { hot } from 'react-hot-loader/root';
 import Router from './router/index';
 import store from '@/redux/store';
 import './assets/css/app';
+import './assets/css/variables';
 import './assets/css/common';
 
 class App extends React.Component {

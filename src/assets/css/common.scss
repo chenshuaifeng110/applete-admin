@@ -14,12 +14,12 @@
 
   &::-webkit-scrollbar-track {
     border-radius: 3px;
-    background-color: #0c4a85;
+    background-color: $boderColor;
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 3px;
-    background-color: #001529;
+    background-color: $backgroundColor;
   }
 }
 

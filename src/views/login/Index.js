@@ -31,12 +31,12 @@ class Index extends Component {
 		return (
 			<div className="container">
 				<div className='container-left'>
-					<img alt='背景图' src={main}></img>
+					<img alt='背景图' src={main} style={{height: '100%',width:'100%'}}></img>
 				</div>
 				<div className='container-right'>
 					<Particles
 						style={{background: "#fff"}}
-						height={this.state.clientHeight - 5 + 'px'}
+						height={this.state.clientHeight - 2 + 'px'}
 						params={particlesConfig}
 					/>
 					<div className="content">
